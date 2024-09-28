@@ -1,0 +1,40 @@
+[ec2-user@ip-10-1-11-199 ~]$ mysql --version
+mysql  Ver 15.1 Distrib 10.5.25-MariaDB, for Linux (x86_64) using  EditLine wrapper
+(reverse-i-search)`m': sudo dnf install mysql-com^Cnity-server -y
+[ec2-user@ip-10-1-11-199 ~]$ mysql -h primary-db.cszrjd9a9znj.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 35
+Server version: 8.0.35 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> CREATE TABLE students (
+    ->     id INT NOT NULL AUTO_INCREMENT,
+    ->     name VARCHAR(100) NOT NULL,
+    ->     PRIMARY KEY (id)
+    -> );
+ERROR 1046 (3D000): No database selected
+MySQL [(none)]> USE udacity
+Database changed
+MySQL [udacity]> CREATE TABLE students (
+    ->     id INT NOT NULL AUTO_INCREMENT,
+    ->     name VARCHAR(100) NOT NULL,
+    ->     PRIMARY KEY (id)
+    -> );
+Query OK, 0 rows affected (0.037 sec)
+
+MySQL [udacity]> INSERT INTO students (name) VALUES ('Alice'), ('Bob');
+Query OK, 2 rows affected (0.007 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MySQL [udacity]> SELECT * FROM students;
++----+-------+
+| id | name  |
++----+-------+
+|  1 | Alice |
+|  2 | Bob   |
++----+-------+
+2 rows in set (0.001 sec)

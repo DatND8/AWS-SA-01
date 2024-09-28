@@ -1,0 +1,7 @@
+1. Minimum RTO for a single AZ outage: AWS RDS will automatically perform a failover to the standby instance in another AZ. The Recovery Time Objective (RTO) typically ranges from 60 to 120 seconds.
+
+2. Minimum RTO for a single region outage: Recovery requires promoting the read replica in the standby region to the primary database. This process can take from several minutes to a few hours, depending on the database size and the failover procedure.
+
+3. Minimum RPO for a single AZ outage: Data is synchronized between the AZs, so the RPO is zero, meaning no data is lost when switching between AZs.
+
+4. Minimum RPO for a single region outage: Data is asynchronously replicated between regions, so the RPO can range from a few seconds to a few minutes, with the potential for minor data loss due to replication lag.
